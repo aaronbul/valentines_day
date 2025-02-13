@@ -1,0 +1,11 @@
+"Coucou ma chérie !"
+"C'est la Saint-Valentin ! 💝"
+"Je voulais faire quelque chose de simple..."
+AFFICHE une input avec un message : Joyeuse Saint-Valentin ! ❤️ avec une animation comme si c'était un message de texte
+"Mais je me suis arrêté(e)"
+"Car je voulais faire quelque chose de spécial" 
+"Parce que..."
+"Tu es spéciale ✨" surligné en rose  
+"Alors..."
+"Joyeuse Saint-Valentin ! ❤️ Merci de m'avoir accompagnée dans ma vie. Je t'aime."
+"PS: Clique pour recommencer 😊" clicable
