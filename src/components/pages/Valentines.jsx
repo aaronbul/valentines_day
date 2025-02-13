@@ -185,6 +185,30 @@ const FloatingHeart = styled.div`
   }
 `;
 
+const PlayMusicButton = styled.button`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background: rgba(255, 105, 180, 0.8);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
 const Hearts = () => {
   return Array.from({ length: 40 }).map((_, index) => (
     <FloatingHeart
@@ -200,6 +224,7 @@ const Hearts = () => {
 const Valentines = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [typedText, setTypedText] = useState('');
+  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(new Audio('/earfquake.mp3'));
   const messages = [
     "Coucou ma chérie !",
@@ -214,23 +239,19 @@ const Valentines = () => {
     "Joyeuse Saint-Valentin ! ❤️ Merci de m'avoir accompagnée dans ma vie. Je t'aime."
   ];
 
-  useEffect(() => {
-    // Configuration de l'audio
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0.5; // Volume à 50%
-    
-    // Démarrer la musique au chargement
-    const playAudio = async () => {
-      try {
-        await audioRef.current.play();
-      } catch (err) {
-        console.log('Erreur de lecture audio:', err);
-      }
-    };
-    
-    playAudio();
+  const toggleMusic = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
 
-    // Nettoyage
+  useEffect(() => {
+    audioRef.current.loop = true;
+    audioRef.current.volume = 0.5;
+
     return () => {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
@@ -275,6 +296,9 @@ const Valentines = () => {
 
   return (
     <Container>
+      <PlayMusicButton onClick={toggleMusic}>
+        {isPlaying ? '🔇' : '🔊'}
+      </PlayMusicButton>
       {currentStep === 1 && <SimpleText>Coucou ma chérie !</SimpleText>}
       {currentStep === 2 && <SimpleText>C'est la Saint-Valentin ! 💝</SimpleText>}
       {currentStep === 3 && <SimpleText>Je voulais faire quelque chose de simple...</SimpleText>}
