@@ -309,7 +309,7 @@ const Valentines = () => {
             Joyeuse Saint-Valentin ! ❤️
           </SimpleText>
           <SimpleText>
-            Merci de m'avoir accompagnée dans ma vie. Je t'aime.
+            Merci de m'accompagnée dans ma vie. Je t'aime.
           </SimpleText>
           <RestartButton onClick={handleRestart}>
             Recommencer 💝
