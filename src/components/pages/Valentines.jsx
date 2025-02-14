@@ -222,7 +222,7 @@ const Hearts = () => {
 };
 
 const Valentines = () => {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
   const [typedText, setTypedText] = useState('');
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(new Audio('/earfquake.mp3'));
