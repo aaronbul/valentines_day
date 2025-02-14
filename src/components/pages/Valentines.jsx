@@ -236,7 +236,7 @@ const Valentines = () => {
     "Parce que...",
     "Tu es spéciale ✨",
     "Alors...",
-    "Joyeuse Saint-Valentin ! ❤️ Merci de m'avoir accompagnée dans ma vie. Je t'aime."
+    "Joyeuse Saint-Valentin ! ❤️ Merci de de m'accompagner dans ma vie. Je t'aime."
   ];
 
   const toggleMusic = () => {
@@ -333,7 +333,7 @@ const Valentines = () => {
             Joyeuse Saint-Valentin ! ❤️
           </SimpleText>
           <SimpleText>
-            Merci de m'accompagnée dans ma vie. Je t'aime.
+            Merci de m'accompagner dans ma vie. Je t'aime.
           </SimpleText>
           <RestartButton onClick={handleRestart}>
             Recommencer 💝
