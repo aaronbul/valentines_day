@@ -239,24 +239,33 @@ const Valentines = () => {
     "Joyeuse Saint-Valentin ! ❤️ Merci de de m'accompagner dans ma vie. Je t'aime."
   ];
 
+  useEffect(() => {
+    const audio = new Audio('/earfquake.mp3');
+    audioRef.current = audio;
+    audioRef.current.loop = true;
+    audioRef.current.volume = 0.5;
+
+    audio.addEventListener('error', (e) => {
+      console.error('Erreur de chargement audio:', e);
+    });
+
+    return () => {
+      audio.pause();
+      audio.remove();
+    };
+  }, []);
+
   const toggleMusic = () => {
     if (isPlaying) {
       audioRef.current.pause();
     } else {
-      audioRef.current.play();
+      audioRef.current.play().catch(error => {
+        console.error("Erreur lors de la lecture:", error);
+        setIsPlaying(false);
+      });
     }
     setIsPlaying(!isPlaying);
   };
-
-  useEffect(() => {
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0.5;
-
-    return () => {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-    };
-  }, []);
 
   useEffect(() => {
     if (currentStep < messages.length) {
