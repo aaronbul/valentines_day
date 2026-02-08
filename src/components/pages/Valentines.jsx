@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -17,25 +17,6 @@ const Container = styled.div`
   left: 0;
   overflow-y: auto;
   box-sizing: border-box;
-`;
-
-const Message = styled.div`
-  font-size: 1.5rem;
-  margin: 10px;
-  padding: 15px 25px;
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  opacity: ${props => props.visible ? 1 : 0};
-  transform: ${props => props.visible ? 'translateY(0)' : 'translateY(20px)'};
-  transition: all 0.5s ease;
-  display: ${props => props.visible ? 'block' : 'none'};
-`;
-
-const SpecialMessage = styled(Message)`
-  background-color: #ffb6c1;
-  font-weight: bold;
-  color: #000000;
 `;
 
 const RestartButton = styled.button`
@@ -98,11 +79,6 @@ const MessageInput = styled.div`
   gap: 10px;
   align-items: center;
   animation: fadeIn 1s ease-out;
-`;
-
-const InputText = styled.div`
-  flex-grow: 1;
-  color: #000000;
 `;
 
 const SendButton = styled.button`
@@ -274,7 +250,7 @@ const Valentines = () => {
       }, 4000);
       return () => clearTimeout(timer);
     }
-  }, [currentStep]);
+  }, [currentStep, messages.length]);
 
   useEffect(() => {
     if (currentStep === 4) {
@@ -309,7 +285,7 @@ const Valentines = () => {
         {isPlaying ? '🔇' : '🔊'}
       </PlayMusicButton>
       {currentStep === 1 && <SimpleText>Coucou ma chérie !</SimpleText>}
-      {currentStep === 2 && <SimpleText>C'est la Saint-Valentin ! 💝</SimpleText>}
+      {currentStep === 2 && <SimpleText>C&apos;est la Saint-Valentin ! 💝</SimpleText>}
       {currentStep === 3 && <SimpleText>Je voulais faire quelque chose de simple...</SimpleText>}
       {currentStep === 4 && (
         <MessageInput>
@@ -342,7 +318,7 @@ const Valentines = () => {
             Joyeuse Saint-Valentin ! ❤️
           </SimpleText>
           <SimpleText>
-            Merci de m'accompagner dans ma vie. Je t'aime.
+            Merci de m&apos;accompagner dans ma vie. Je t&apos;aime.
           </SimpleText>
           <RestartButton onClick={handleRestart}>
             Recommencer 💝
